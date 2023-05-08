@@ -15,6 +15,10 @@
      {% comment %} <link rel="stylesheet" href="{% static 'styles/master.css' %}" /> {% endcomment %}
 </head>
 <body>
+
+
+
+
 <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
     <div class="container">
         <a href="/" class="navbar-brand d-flex w-50 me-auto">Star Social</a>
@@ -23,11 +27,19 @@
         </button>
         <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
             <ul class="navbar-nav w-100 justify-content-center">
-                <li><a href="#">Groups</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="#">post</a></li>
-                    <li><a href="#">Create Group</a></li>
-                {% endif %}
+
+                	{% if user.is_authenticated %}
+                      <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+                      <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
+                      <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a></li>
+                      <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
+    						{% else %}
+    						      <li><a href="{% url 'groups:all' %}"class="btn btn-simple">Groups</a></li>
+    						      <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
+    						      <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
+    						{% endif %}
+
+                
             </ul>
             <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
                 {% if user.is_authenticated %}

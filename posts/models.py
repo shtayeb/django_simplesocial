@@ -6,7 +6,9 @@ import  misaka
 
 from groups.models import Group
 
-from django.contrib.auth import User
+from django.contrib.auth.models import User
+
+
 
 
 class Post(models.Model):
